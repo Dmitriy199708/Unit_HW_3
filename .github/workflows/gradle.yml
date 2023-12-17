@@ -21,7 +21,7 @@ jobs:
         # имя файла SUT будет отличаться в каждой задаче.
         # & означает, что в фоновом режиме не блокируем терминал для запуска тестов,
         # обязательно должен быть для запуска SUT в CI
-        build_script: ./gradlew test --info -Dselenide.headless=true
+#        build_script: ./gradlew test --info -Dselenide.headless=true
         run: java -jar ./artifacts/app-mbank.jar &
       - name: Build with Gradle
         # Запускаем автотесты
