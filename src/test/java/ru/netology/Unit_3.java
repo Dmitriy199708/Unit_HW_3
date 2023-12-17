@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Unit_3 {
 
-    private WebDriver driver;
+    private  WebDriver driver;
 
 //    @BeforeAll
 //    public static void setupAll() {
@@ -30,11 +31,13 @@ public class Unit_3 {
     public static void setupAll() {
         WebDriverManager.chromedriver().setup();
 
+
     }
 
     @BeforeEach
     void setUp() {
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
@@ -43,6 +46,8 @@ public class Unit_3 {
         driver.get("http://localhost:9999");
         //Открыть страницу во весь экран
         driver.manage().window().maximize();
+
+
     }
 
     @AfterEach
@@ -61,7 +66,7 @@ public class Unit_3 {
         driver.findElement(By.className("button__content")).click();
         String text = driver.findElement(By.className("paragraph_theme_alfa-on-white")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
-
+        driver.close();
 //        Thread.sleep(2000);
     }
 
@@ -73,6 +78,7 @@ public class Unit_3 {
         driver.findElement(By.className("button__content")).click();
         String text = driver.findElement(By.className("input__sub")).getText();
         assertEquals("Поле обязательно для заполнения", text.trim());
+        driver.close();
     }
 
     @Test
@@ -83,7 +89,7 @@ public class Unit_3 {
         driver.findElement(By.className("button__content")).click();
         String text = driver.findElement(By.className("checkbox__text")).getText();
         assertEquals("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй", text.trim());
-
+        driver.close();
     }
 
     @Test /*приходит некорректный текст при запуске теста , если сравнивать с перменной text*/
@@ -94,7 +100,7 @@ public class Unit_3 {
         driver.findElement(By.className("button__content")).click();
         String text = driver.findElement(By.cssSelector("[class=\"input__sub\"]")).getText();
         assertEquals("Поле обязательно для заполнения", "Поле обязательно для заполнения");
-
+        driver.close();
     }
 
     @Test
@@ -105,7 +111,7 @@ public class Unit_3 {
         driver.findElement(By.className("button__content")).click();
         String text = driver.findElement(By.cssSelector("[class=\"input__sub\"]")).getText();
         assertEquals("Поле обязательно для заполнения", text.trim());
-
+        driver.close();
     }
 
     @Test
@@ -117,7 +123,7 @@ public class Unit_3 {
         driver.findElement(By.className("button__content")).click();
         String text = driver.findElement(By.className("input__sub")).getText();
         assertEquals("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.", text.trim());
-
+        driver.close();
     }
 
     @Test /*приходит некорректный текст при запуске теста , если сравнивать с перменной text*/
@@ -130,7 +136,7 @@ public class Unit_3 {
         driver.findElement(By.className("button__content")).click();
         String text = driver.findElement(By.className("input__sub")).getText();
         assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.");
-
+        driver.close();
     }
 
 
@@ -143,7 +149,7 @@ public class Unit_3 {
         driver.findElement(By.className("button__content")).click();
         String text = driver.findElement(By.className("input__sub")).getText();
         assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.");
-
+        driver.close();
     }
 
 
@@ -156,6 +162,7 @@ public class Unit_3 {
         driver.findElement(By.className("button__content")).click();
         String text = driver.findElement(By.className("paragraph_theme_alfa-on-white")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
+        driver.close();
     }
 }
 
