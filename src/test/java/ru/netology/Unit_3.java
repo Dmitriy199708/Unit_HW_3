@@ -30,17 +30,17 @@ public class Unit_3 {
     @BeforeAll
     public static void setupAll() {
         WebDriverManager.chromedriver().setup();
-
-
-    }
-
-    @BeforeEach
-    void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
+
+    }
+
+    @BeforeEach
+    void setUp() {
+
         driver = new ChromeDriver();
         //Загрузить страницу
         driver.get("http://localhost:9999");
