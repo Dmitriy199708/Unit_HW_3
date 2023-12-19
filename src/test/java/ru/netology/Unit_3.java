@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Unit_3 {
 
-    private  WebDriver driver;
+    private static WebDriver driver;
 
 //    @BeforeAll
 //    public static void setupAll() {
@@ -30,18 +30,16 @@ public class Unit_3 {
     @BeforeAll
     public static void setupAll() {
         WebDriverManager.chromedriver().setup();
-
-
-    }
-
-    @BeforeEach
-    void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+    }
+
+    @BeforeEach
+    void setUp() {
         //Загрузить страницу
         driver.get("http://localhost:9999");
         //Открыть страницу во весь экран
@@ -57,7 +55,7 @@ public class Unit_3 {
     }
 
     @Test
-    void FillingAllFieldsWithValidValues() throws InterruptedException {
+    void fillingAllFieldsWithValidValues() throws InterruptedException {
 
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("Дмитрий Лютиков");
@@ -71,7 +69,7 @@ public class Unit_3 {
     }
 
     @Test
-    void SubmittingAnEmptyForm() throws InterruptedException {
+    void submittingAnEmptyForm() throws InterruptedException {
 
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         driver.findElement(By.className("checkbox__box")).click();
@@ -82,7 +80,7 @@ public class Unit_3 {
     }
 
     @Test
-    void SubmittingFormWithoutCheckbox() throws InterruptedException {
+    void submittingFormWithoutCheckbox() throws InterruptedException {
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("Дмитрий Лютиков");
         elements.get(1).sendKeys("+79200011585");
@@ -93,7 +91,7 @@ public class Unit_3 {
     }
 
     @Test /*приходит некорректный текст при запуске теста , если сравнивать с перменной text*/
-    void SubmittingFormWithoutNotPhoneNumber() throws InterruptedException {
+    void submittingFormWithoutNotPhoneNumber() throws InterruptedException {
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("Дмитрий Лютиков");
         driver.findElement(By.className("checkbox__box")).click();
@@ -104,7 +102,7 @@ public class Unit_3 {
     }
 
     @Test
-    void SubmittingFormWithoutNotName() throws InterruptedException {
+    void submittingFormWithoutNotName() throws InterruptedException {
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(1).sendKeys("+79200011585");
         driver.findElement(By.className("checkbox__box")).click();
@@ -115,7 +113,7 @@ public class Unit_3 {
     }
 
     @Test
-    void SubmittingFormWithAnInvalidField() throws InterruptedException {
+    void submittingFormWithAnInvalidField() throws InterruptedException {
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("GGGGggg");
         elements.get(1).sendKeys("+79200011585");
@@ -128,7 +126,7 @@ public class Unit_3 {
 
     @Test /*приходит некорректный текст при запуске теста , если сравнивать с перменной text*/
 
-    void BoundaryValuesOfFieldNumber() throws InterruptedException {
+    void boundaryValuesOfFieldNumber() throws InterruptedException {
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("Сергей Сергей");
         elements.get(1).sendKeys("+792000115859");
@@ -141,7 +139,7 @@ public class Unit_3 {
 
 
     @Test
-    void SubmittingFormWithoutPlusInThePhoneNumber() throws InterruptedException {
+    void submittingFormWithoutPlusInThePhoneNumber() throws InterruptedException {
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("Сергей Сергей");
         elements.get(1).sendKeys("792000115859");
@@ -154,7 +152,7 @@ public class Unit_3 {
 
 
     @Test
-    void SubmittingFormWitHyphenInTheLastNameField() throws InterruptedException {
+    void submittingFormWitHyphenInTheLastNameField() throws InterruptedException {
         List<WebElement> elements = driver.findElements(By.className("input__control"));
         elements.get(0).sendKeys("Сергей-Сергей");
         elements.get(1).sendKeys("+79200011585");
