@@ -30,18 +30,18 @@ public class Unit_3 {
     @BeforeAll
     public static void setupAll() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
+
 
     }
 
     @BeforeEach
     void setUp() {
-
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
         //Загрузить страницу
         driver.get("http://localhost:9999");
         //Открыть страницу во весь экран
