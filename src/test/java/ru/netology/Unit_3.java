@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Unit_3 {
 
-    private static WebDriver driver;
+    private WebDriver driver;
 
 //    @BeforeAll
 //    public static void setupAll() {
@@ -27,24 +27,30 @@ public class Unit_3 {
 //
 //    }
 
-    @BeforeAll
-    public static void setupAll() {
+//    @BeforeAll
+//    public static void setupAll() {
+//        WebDriverManager.chromedriver().setup();
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--remote-allow-origins=*");
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--headless");
+//        options.addArguments("window-size=1800x900");
+//        driver = new ChromeDriver(options);
+//    }
+
+    @BeforeEach
+    void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
+        options.addArguments("window-size=1800x900");
         driver = new ChromeDriver(options);
-    }
-
-    @BeforeEach
-    void setUp() {
         //Загрузить страницу
         driver.get("http://localhost:9999");
-        //Открыть страницу во весь экран
-        driver.manage().window().maximize();
-
 
     }
 
